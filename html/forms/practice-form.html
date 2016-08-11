@@ -6,9 +6,16 @@
 
 <body>
 <div>
-  <form action="success.html" name="Programming-Basics">
-    <!-- Select area with 3 inputs. A textarea input. Three other varying changes.Label and name everything. Include a submit button -->
+  <form action="success.html" name="Programming-Basics" method="post">
+    <!--
+    [x]Select area with 3 inputs.
+    []A textarea input.
+    []Three other varying inputs.
+    []Label and name everything.
+    [x]Include a submit button
+  -->
     <div>
+      <label>What's your choice of language?</label>
       <select name="choice-language">
         <option value="go">Go</option>
         <option value="ruby" selected>Ruby</option>
@@ -16,7 +23,7 @@
         <option value="python">Python</option>
       </select>
     </div>
-
+    <button type="submit">Send your answers</button>
   </form>
 </div>
 
