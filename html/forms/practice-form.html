@@ -7,13 +7,7 @@
 <body>
 <div>
   <form action="success.html" name="Programming-Basics" method="post">
-    <!--
-    [x]Select area with 3 inputs.
-    []A textarea input.
-    []Three other varying inputs.
-    []Label and name everything.
-    [x]Include a submit button
-  -->
+
     <fieldset>
       <label>How long have you been programming?</label>
       <input type="text" name="programming-time">
@@ -34,10 +28,10 @@
       <br />
       <label>What's most exciting about programming for you?</label>
       <br />
-      <textarea rows="4" cols= "50"></textarea>
+      <textarea rows="4" cols= "50" name="exciting"></textarea>
       <br/>
       <label>What email address to we message for interviews?</label>
-      <input type="email" name="email">
+      <input type="email" name="email" required>
     </fieldset>
     <button type="submit">Send your answers</button>
   </form>
