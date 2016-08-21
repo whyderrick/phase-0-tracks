@@ -6,3 +6,21 @@ img {
   display: block;
   margin: 0 auto;
 }
+
+#hat {
+  position: relative;
+  top: 135px;
+  left: 15px;
+  z-index: 1;
+}
+
+#glasses {
+  position: relative;
+  top: 158px;
+  left: 8px;
+  z-index: 1;
+}
+
+#octopus {
+  z-index: 0;
+}
