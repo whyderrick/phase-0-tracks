@@ -5,7 +5,7 @@ def intake_hamster
   turn_up = gets.chomp.to_i
   puts "What color is your hamster?"
   ham_color = gets.chomp
-
+=begin
   valid_input = false
   until valid_input
   puts "Is your hamster a good candidate for adoption? (true, false)"
@@ -21,6 +21,15 @@ def intake_hamster
   # Make sure user input is valid
   adoption = true if adoption == "true"
   adoption = false if adoption == "false"
+=end
+  puts "Is your hamster a good candidate for adoption? (true or false)"
+  adoption = gets.chomp.downcase
+    until adoption == "true" || adoption == "false"
+      puts "Please answer true or false"
+      adoption = gets.chomp
+    end
+    adoption = true if adoption == "true"
+    adoption = false if adoption == "false"
   puts "How old would you guess your hamster is?"
   estimated_age = gets.chomp
   if estimated_age == ""
