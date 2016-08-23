@@ -7,13 +7,13 @@ def intake_hamster
   ham_color = gets.chomp
   puts "Is your hamster a good candidate for adoption? (true, false)"
   adoption = gets.chomp.downcase
-  # How do we make our input accept "TRUE", "true" and "True"
   adoption = true if adoption == "true"
   adoption = false if adoption == "false"
   puts "How old would you guess your hamster is?"
   estimated_age = gets.chomp
   if estimated_age == ""
     estimated_age = nil
+  else estimated_age.to_i
   end
   if adoption == true
     puts "Your hamster is name #{ham_name}. Its turn-up ratio is #{turn_up}. Its color is #{ham_color}. Its age is #{estimated_age}."
