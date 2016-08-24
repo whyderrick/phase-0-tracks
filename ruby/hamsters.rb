@@ -29,7 +29,11 @@ def intake_hamster
       adoption = gets.chomp
     end
     adoption = true if adoption == "true"
+<<<<<<< HEAD
     adoption = false if adoption == "false"
+=======
+    adoption = false if adoption == "false  "
+>>>>>>> gps-2.1
   puts "How old would you guess your hamster is?"
   estimated_age = gets.chomp
   if estimated_age == ""
@@ -42,5 +46,3 @@ def intake_hamster
     puts "Your hamster's no good for adoption. It's this old: #{estimated_age}."
   end
 end
-
-intake_hamster
