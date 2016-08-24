@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 def intake_hamster
   puts "What your hamster's name?"
   ham_name = gets.chomp
@@ -46,4 +44,3 @@ def intake_hamster
 end
 
 intake_hamster
->>>>>>> Stashed changes
