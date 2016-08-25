@@ -9,40 +9,47 @@ def new_employee_intake
       string = string_to_bool(gets.chomp)
     end
   end
-  # Ask name
-  puts "What is your name?"
-  name = gets.chomp
-  # Ask age
-  puts "How old are you?"
-  age = gets.chomp.to_i
-  # Ask birthyear
-  puts "What year were you born?"
-  birth_year = gets.chomp.to_i
-  # Check that age and birthyear make sense together
-  if age == (2016 - birth_year)
-    # I'd love to use the Ruby Date Object here, but couldn't work it out quickly enough
-    true_age = true
-  else
-    true_age = false
-  end
-  # Check if they'll eat garlic
-  puts "Should we order you garlic bread?"
-  garlic_bread = string_to_bool(gets.chomp)
-  puts "Would you like to enroll in the company health plan?"
-  health_care= string_to_bool(gets.chomp)
+  # Ask how big the batch is
+  puts "How many employees are you onboarding?"
+  num_employees = gets.chomp.to_i
+  num_employees.times do |candidate|
+    # Ask name
+    puts "What is your name?"
+    name = gets.chomp
+    # Ask age
+    puts "How old are you?"
+    age = gets.chomp.to_i
+    # Ask birthyear
+    puts "What year were you born?"
+    birth_year = gets.chomp.to_i
+    # Check that age and birthyear make sense together
+    if age == (2016 - birth_year)
+      # I'd love to use the Ruby Date Object here, but couldn't work it out quickly enough
+      true_age = true
+    else
+      true_age = false
+    end
+    # Check if they'll eat garlic
+    puts "Should we order you garlic bread?"
+    garlic_bread = string_to_bool(gets.chomp)
+    puts "Would you like to enroll in the company health plan?"
+    health_care= string_to_bool(gets.chomp)
 
-  is_vampire = "Results inconclusive."
-  if true_age && garlic_bread
-    is_vampire ="Probably not a vampire."
+    is_vampire = "results inconclusive."
+    if true_age && garlic_bread
+      is_vampire ="probably not a vampire."
+    end
+    if !true_age && (!(garlic_bread || health_care))
+      is_vampire = "probably a vampire."
+    end
+    if !(true_age && garlic_bread && health_care)
+      is_vampire = "almost certainly a vampire."
+    end
+    if name == "Drake Cula" || name == "Tu Fang"
+      is_vampire = "definitely a vampire."
+    end
+    puts "#{name} is #{is_vampire}."
   end
-  if !true_age && (!(garlic_bread || health_care))
-    is_vampire = "Probably a vampire."
-  end
-  if !(true_age && garlic_bread && health_care)
-    is_vampire = "Almost certainly a vampire."
-  end
-  if name = "Drake Cula" || name = "Tu Fang"
-    is_vampire = "Definitely a is_vampire."
-  end
-  print is_vampire
 end
+
+new_employee_intake
