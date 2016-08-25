@@ -42,7 +42,7 @@ def new_employee_intake
     if !true_age && (!(garlic_bread || health_care))
       is_vampire = "probably a vampire."
     end
-    if !(true_age && garlic_bread && health_care)
+    if !true_age && !garlic_bread && !health_care
       is_vampire = "almost certainly a vampire."
     end
     if name == "Drake Cula" || name == "Tu Fang"
