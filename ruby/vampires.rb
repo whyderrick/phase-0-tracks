@@ -34,12 +34,14 @@ def new_employee_intake
     garlic_bread = string_to_bool(gets.chomp)
     puts "Would you like to enroll in the company health plan?"
     health_care= string_to_bool(gets.chomp)
-    puts "Enter any allergies you have. (Type \"done\" when you're finished).
     allergies = []
-    until gets.chomp.downcase == "done"
-      allergies << gets.chomp.downcase
+    puts "Enter any allergies you have. (Type \"done\" when you're finished)."
+    input = gets.chomp.downcase
+    until input == "done"
+      allergies << input
+      input = gets.chomp.downcase
     end
-    puts  allergies
+    # puts allergies
 
     is_vampire = "results inconclusive."
     if true_age && garlic_bread
@@ -48,7 +50,9 @@ def new_employee_intake
     if !true_age && (!(garlic_bread || health_care))
       is_vampire = "probably a vampire."
     end
-
+    allergies.each do |word|
+      is_vampire = "probably a vampire" if word == "sunshine"
+    end
     if !true_age && !garlic_bread && !health_care
       is_vampire = "almost certainly a vampire."
     end
