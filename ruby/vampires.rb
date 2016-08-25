@@ -31,9 +31,18 @@ def new_employee_intake
   puts "Would you like to enroll in the company health plan?"
   health_care= string_to_bool(gets.chomp)
 
-  if t && garlic_bread
-    "Probably not a vampire"
-  elsif !(age == (2016 - birth_year)) && (garlic_bread || garlic_bread)
-    "Probably a vampire"
+  is_vampire = "Results inconclusive."
+  if true_age && garlic_bread
+    is_vampire ="Probably not a vampire."
   end
+  if !true_age && (!(garlic_bread || health_care))
+    is_vampire = "Probably a vampire."
+  end
+  if !(true_age && garlic_bread && health_care)
+    is_vampire = "Almost certainly a vampire."
+  end
+  if name = "Drake Cula" || name = "Tu Fang"
+    is_vampire = "Definitely a is_vampire."
+  end
+  print is_vampire
 end
