@@ -61,6 +61,7 @@ def new_employee_intake
     end
     puts "#{name} is #{is_vampire}."
   end
+  puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 end
 
 new_employee_intake
