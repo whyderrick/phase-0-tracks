@@ -62,5 +62,23 @@ def decryption(str)
 end
 
 
-decryption(encryption("Swordfish"))
+# decryption(encryption("Swordfish"))
 # This is a nested method call. It works because of the order in which method calls are evaluated. Anything in parentheses is evaluated before it's passed to functions. In the same way that placing a variable or mathematical expression in the method argument would cause the method to be evaluated against the value of the variable or the expression, what we've done here is decrypted "Swordfish" after it's been passed through encryption
+
+# DRIVER CODE
+puts "Would you like to encrypt or decrypt a password?"
+answer = gets.chomp.downcase
+until answer == "encrypt" || answer == "decrypt"
+  puts "Sorry but the only valid answers are \"Encrypt\" or \"Decrypt\". Please try again."
+  answer
+end
+puts "What's the password you'd like #{answer}ed?"
+password = gets.chomp
+if answer == "encrypt"
+  return_string  = encryption(password)
+else
+  return_string = decryption(password)
+end
+puts "Your #{answer}ed password is: #{return_string}"
+puts "That's it. Ta-ta for now!"
+
