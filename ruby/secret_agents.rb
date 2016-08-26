@@ -10,15 +10,17 @@ Encryption
     4. Return to 2.1
 
 =end
-def encryption
-  puts "Input string: "
-  str = gets.chomp.downcase
+def encryption(str)
+  # puts "Input string: "
+  # str = gets.chomp.downcase
   encypted_str = ""
   count = 0
 
   while count < str.length
-    if encypted_str[count] == " "
+    if str[count] == " "
       count += 1
+    elsif str[count] == "z"
+      encypted_str += "a"
     else
       encypted_str += str[count].next
       count += 1
@@ -38,9 +40,9 @@ Decryption
 4. Save new string
 =end
 
-def decryption
-  puts "Input string:"
-  str = gets.chomp.downcase
+def decryption(str)
+  # puts "Input string:"
+  # str = gets.chomp.downcase
   decrypted_str = ""
   cipher = "abcdefghijklmnopqrstuvwxyz"
   count = 0
