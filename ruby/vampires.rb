@@ -23,7 +23,7 @@ def new_employee_intake
     puts "What year were you born?"
     birth_year = gets.chomp.to_i
     # Check that age and birthyear make sense together
-    if age == (2016 - birth_year)
+    if age == (Time.now.year - birth_year)
       # I'd love to use the Ruby Date Object here, but couldn't work it out quickly enough
       true_age = true
     else
