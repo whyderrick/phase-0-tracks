@@ -1,5 +1,5 @@
 =begin
-Encryption
+encryption
 
 1. Take input string
 2. While we have letters left
@@ -30,7 +30,7 @@ def encryption(str)
 end
 
 =begin
-Decryption
+decryption
 
 1. Grab string
 2. Take each letter of string
@@ -60,3 +60,7 @@ def decryption(str)
   end
   decrypted_str
 end
+
+
+decryption(encryption("Swordfish"))
+# This is a nested method call. It works because of the order in which method calls are evaluated. Anything in parentheses is evaluated before it's passed to functions. In the same way that placing a variable or mathematical expression in the method argument would cause the method to be evaluated against the value of the variable or the expression, what we've done here is decrypted "Swordfish" after it's been passed through encryption
