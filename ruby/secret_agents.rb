@@ -10,10 +10,18 @@ Encryption
     4. Return to 2.1
 
 =end
-puts "Input string: "
-str = gets.chomp
+def encryption
+  puts "Input string: "
+  str = gets.chomp.downcase
+  encypted_str = ""
+  count = 0
 
-while (str  str.length)
+  while count < str.length
+    encypted_str += str[count].next
+    count += 1
+  end
+  encypted_str
+end
 
 
 
