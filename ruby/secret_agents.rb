@@ -17,8 +17,12 @@ def encryption
   count = 0
 
   while count < str.length
-    encypted_str += str[count].next
-    count += 1
+    if encypted_str[count] == " "
+      count += 1
+    else
+      encypted_str += str[count].next
+      count += 1
+    end
   end
   encypted_str
 end
@@ -42,11 +46,15 @@ def decryption
   count = 0
 
   while count < str.length
-    c_index = cipher.index(str[count])
-    new_letter = cipher[c_index - 1]
-    decrypted_str += new_letter
+    if str[count] == " "
+      count += 1
+    else
+      c_index = cipher.index(str[count])
+      new_letter = cipher[c_index - 1]
+      decrypted_str += new_letter
 
-    count += 1
+      count += 1
+    end
   end
   decrypted_str
 end
