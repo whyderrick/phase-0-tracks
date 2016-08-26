@@ -23,13 +23,6 @@ def encryption
   encypted_str
 end
 
-
-
-
-
-
-
-
 =begin
 Decryption
 
@@ -39,5 +32,16 @@ Decryption
  2. If it's a space character, leave it as is
 3. Move to next letter until the end of the string
 4. Save new string
-
 =end
+
+def decryption
+  puts "Input string:"
+  str = gets.chomp.downcase
+  decrypted_str = ""
+  cipher = "abcdefghijklmnopqrstuvwxyz"
+  count = 0
+
+  while count < str.length
+    new_letter =
+  end
+end
