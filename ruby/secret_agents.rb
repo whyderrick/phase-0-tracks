@@ -42,6 +42,11 @@ def decryption
   count = 0
 
   while count < str.length
-    new_letter =
+    c_index = cipher.index(str[count])
+    new_letter = cipher[c_index - 1]
+    decrypted_str += new_letter
+
+    count += 1
   end
+  decrypted_str
 end
