@@ -9,11 +9,20 @@ Explaining to a robot how to use an elevator
 --  Stand 5 feet back from the doors
 --  If elevator is unoccupied, board it
 --  If there are people on it, wait until there is no moment for 1.5 seconds, then board.
+- Check the left and right sides for elevator buttons. Press the button with a number that matches the stored destination floor.
 - Find space to stand by checking the rearmost left corner.
 --  If the corner and path to the checked spot are free.
 --  If not:
 ---   Check the space 18 inches away from the nearest horizontal wall. Go there if it's free; Otherwise repeat the search another 18 inches to the right
 ----    If you reach a horizontal wall, check the space 18 inches forward from the rear wall along the right wall. (go if free). Else, continue searching.
+- Whenever the elevator stops, check the current floor (it should be either in an lcd near the top of the elevator or on a small plaque in the upper left or right corner of the doorframe.)
+--  If it matches the current floor, exit.
+--  If not, keep waiting.
+- To exit:
+--  Wait 1 second for others to be still.
+--  Move to towards the door. If there is a person between you and the door, check 18 inches to either side of the ideal path for a new path. Else, beep to ask for permission to pass.
+- If exit is unsuccessful, on the destination floor, press the button for destination floor again.
+
 
 
 An algorithm for putting on pants
