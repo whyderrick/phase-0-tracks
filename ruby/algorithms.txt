@@ -9,7 +9,11 @@ Explaining to a robot how to use an elevator
 --  Stand 5 feet back from the doors
 --  If elevator is unoccupied, board it
 --  If there are people on it, wait until there is no moment for 1.5 seconds, then board.
--
+- Find space to stand by checking the rearmost left corner.
+--  If the corner and path to the checked spot are free.
+--  If not:
+---   Check the space 18 inches away from the nearest horizontal wall. Go there if it's free; Otherwise repeat the search another 18 inches to the right
+----    If you reach a horizontal wall, check the space 18 inches forward from the rear wall along the right wall. (go if free). Else, continue searching.
 
 
 An algorithm for putting on pants
