@@ -1,6 +1,16 @@
 Explaining to a robot how to use an elevator
 (I accidentally lost my previous work with a botched stash so this has a 10-minute time limit for me.)
+- Check the current floor.
+- Ask owner for destination floor. Store that answer.
+- Compare destination floor with current floor.
+--  If target floor is > the current floor, press the "Up" button
+--  If target floor is < the current floor, press the "Down" button
+- Wait until an elevator is available to board. When the an elevator chimes or the light corresponding to it appears
+--  Stand 5 feet back from the doors
+--  If elevator is unoccupied, board it
+--  If there are people on it, wait until there is no moment for 1.5 seconds, then board.
 -
+
 
 An algorithm for putting on pants
 -
