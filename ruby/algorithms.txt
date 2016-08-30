@@ -1,0 +1,42 @@
+Explaining to a robot how to use an elevator
+(I accidentally lost my previous work with a botched stash so this has a 10-minute time limit for me.)
+- Check the current floor.
+- Ask owner for destination floor. Store that answer.
+- Compare destination floor with current floor.
+--  If target floor is > the current floor, press the "Up" button
+--  If target floor is < the current floor, press the "Down" button
+- Wait until an elevator is available to board. When the an elevator chimes or the light corresponding to it appears
+--  Stand 5 feet back from the doors
+--  If elevator is unoccupied, board it
+--  If there are people on it, wait until there is no moment for 1.5 seconds, then board.
+- Check the left and right sides for elevator buttons. Press the button with a number that matches the stored destination floor.
+- Find space to stand by checking the rearmost left corner.
+--  If the corner and path to the checked spot are free.
+--  If not:
+---   Check the space 18 inches away from the nearest horizontal wall. Go there if it's free; Otherwise repeat the search another 18 inches to the right
+----    If you reach a horizontal wall, check the space 18 inches forward from the rear wall along the right wall. (go if free). Else, continue searching.
+- Whenever the elevator stops, check the current floor (it should be either in an lcd near the top of the elevator or on a small plaque in the upper left or right corner of the doorframe.)
+--  If it matches the current floor, exit.
+--  If not, keep waiting.
+- To exit:
+--  Wait 1 second for others to be still.
+--  Move to towards the door. If there is a person between you and the door, check 18 inches to either side of the ideal path for a new path. Else, beep to ask for permission to pass.
+- If exit is unsuccessful, on the destination floor, press the button for destination floor again.
+
+
+
+An algorithm for putting on pants
+- Check the top shelf of the closet for the pair of pants I want.
+--  If they're there, grab them and set them on the bed
+--  If not, check the laundry pile in the comfy chair by the door.
+---   If found, grab them.
+---   If not, select another pair to wear. Begin from start.
+- Unfasten button and lower zipper of pants if applicable.
+- Hold pants in hands with each hand over the lengthwise inseam.
+- Lower pants to knee height in front body
+- Lift my left leg above pants. Lower it into the fabric hole on the left side.
+- Repeat previous step replacing left with right side.
+- Hoist pants slowly up thighs.
+- When pants resist, alternately lift each side in half-inch increments.
+- Once pants are sitting at desired height, refasten button & raise zipper.
+- (Optional) put on a belt.
