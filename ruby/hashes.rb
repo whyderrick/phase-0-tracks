@@ -7,7 +7,6 @@ Pseudocode for interior design
   - client income
   - client's inspirations (stored as array)
   - repeat client?
-  - house type
   - budget
 4. Store user answers in a hash for that customer.
 5. Print the data to the screen
@@ -22,13 +21,15 @@ Pseudocode for interior design
 
 =end
 
-def get_info  #prompting user for info
+#prompting user for info
   puts "What's your client's name?"
   client_name = gets.chomp
   puts "How old is your client?"
   client_age = gets.chomp.to_i
   puts "What's your client's income?"
   client_income = gets.chomp.to_i
+  puts "What's your clients budget in thousands?"
+  client_budget = get.chomp.to_i
   puts "Have you worked with this client before? (True/False)"
   client_repeat = gets.chomp
   puts "List the design references your client has given you (Type \"Done\" when you've finished)."
@@ -37,9 +38,17 @@ def get_info  #prompting user for info
   until design_input.downcase = "done"
     client_inspiration << design_input
     puts "Anything else? (Type \"Done\" if not.)"
-    design_input
+    design_input = gets.chomp
   end
 
+h_name = client_name.downcase.gsub(/\s/, '_') # This step of evaluating a variable and setting its value to the name of the hash is trickier than I'd anticipated. Might require a Class. Shelving it for now.
 
+client = {
+  name: client_name,
+  age: client_age,
+  income: client_income,
+  budget: client_budget,
+  repeat?: client_repeat,
+  inspration: client_inspiration,
+}
 
-end
