@@ -60,12 +60,12 @@ client = {
 p client
 
 puts "Any mistakes? Enter \"Yes\" or \"No\"."
-mistakes = get.chomp.downcase
+mistakes = gets.chomp.downcase
 if mistakes.downcase == "yes"
   puts "Whoops! Which field do you want to change?"
   mistaken_field = gets.chomp.to_sym
   puts "What should we change it to?"
-  client[mistaken_field] = gets.chomp
+  client[mistaken_field] = gets.chomp #This won't handle the cases where we processed the input above, but I'm over my time constraint for this exercise and am confident on how to implement control flow for it using the .class method
   puts "Here's what we have now: "
   p client
   puts "Take care!"
