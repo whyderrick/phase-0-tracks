@@ -29,13 +29,18 @@ Pseudocode for interior design
   puts "What's your client's income?"
   client_income = gets.chomp.to_i
   puts "What's your clients budget in thousands?"
-  client_budget = get.chomp.to_i
+  client_budget = gets.chomp.to_i
   puts "Have you worked with this client before? (True/False)"
   client_repeat = gets.chomp
+  if client_repeat.downcase == "true"
+    client_repeat = true
+  else
+    client_repeat = false
+  end
   puts "List the design references your client has given you (Type \"Done\" when you've finished)."
   client_inspiration = []
   design_input = gets.chomp
-  until design_input.downcase = "done"
+  until design_input.downcase == "done"
     client_inspiration << design_input
     puts "Anything else? (Type \"Done\" if not.)"
     design_input = gets.chomp
@@ -48,7 +53,22 @@ client = {
   age: client_age,
   income: client_income,
   budget: client_budget,
-  repeat?: client_repeat,
+  repeat: client_repeat,
   inspration: client_inspiration,
 }
 
+p client
+
+puts "Any mistakes? Enter \"Yes\" or \"No\"."
+mistakes = get.chomp.downcase
+if mistakes.downcase == "yes"
+  puts "Whoops! Which field do you want to change?"
+  mistaken_field = gets.chomp.to_sym
+  puts "What should we change it to?"
+  client[mistaken_field] = gets.chomp
+  puts "Here's what we have now: "
+  p client
+  puts "Take care!"
+else
+  puts "Glad we got it right. Thanks!"
+end
