@@ -1,3 +1,4 @@
+=begin
 def yieldSample
   puts "This code is running. It has not executed a block"
   yield("Brian", "Derrick")
@@ -8,6 +9,7 @@ def yieldSample
 end
 
 yieldSample {|a, b| puts "Name's are #{a} and #{b}"}
+=end
 
 array = ["french fries", "McChicken", "Big Mac", "soda", "sundae", "parfait", "nuggets"]
 
@@ -19,3 +21,11 @@ jordan_stats = {
   slogan: "I wanna be like Mike!",
   endorsements: ["Gatorade", "Nike", "McDonald's"]
 }
+
+array.each{|item| puts "Item is #{item}"}
+jordan_stats.each{|k,v| puts "#{k.to_s}: #{v}"}
+
+array.map{|x| puts x[3..-1]}
+array
+array.map!{|x| puts x[2..-1]}
+array
