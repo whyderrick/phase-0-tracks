@@ -29,3 +29,7 @@ array.map{|x| puts x[3..-1]}
 array
 array.map!{|x| puts x[2..-1]}
 array
+jordan_stats.map{|k,v| puts v * 2}
+jordan_stats
+jordan_stats.map!{|k,v| puts v * 2}
+jordan_stats
