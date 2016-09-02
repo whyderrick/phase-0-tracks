@@ -15,5 +15,8 @@ Time limit: 40mins
 def swap_names
   name = "Felicia Torres" #expected output "Vussit Gimodoe"
   name_arr = name.split(' ')
+  new_name_arr = []
+  new_name_arr[0] = name_arr[-1]
+  new_name_arr << name_arr[0]
 
 end
