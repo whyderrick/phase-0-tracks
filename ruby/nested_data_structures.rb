@@ -38,7 +38,7 @@ room_fun = {
       :fav_tracks => ["How Great", "All Night", "Angels"],
       :format => "Digital"
     },
-    :for_all_we_know =>{
+    :for_all_we_know => {
       pretty_title: "For All We Know",
       artist: "NAO",
       year: 2016,
@@ -47,17 +47,10 @@ room_fun = {
       fav_tracks: ["DYWM","Adore You","Happy"],
       format: "Digital"
     }
-  }
+  },
+  :movies => ["Samurai Champloo" , "Creed" , "Studio Ghibli", "Mad Max: Fury Road"]
 }
 
-
-
-    }
-
-
-    {},
-    {}
-  }
-  movies = ["Samurai Champloo" , "Creed" , "Studio Ghibli", "Mad Max: Fury Road"]
-}
-
+puts room_fun[:movies][3]
+room_fun[:music].each {|k,v| puts v[:pretty_title]} #puts title of each album in the music selection
+puts room_fun[:video_games][:wii].keep_if{|item| item =~ /\s/} # puts title of each game in the wii collection with a multi-word title
