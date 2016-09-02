@@ -33,3 +33,25 @@ jordan_stats.map{|k,v| puts v * 2}
 jordan_stats
 jordan_stats.map!{|k,v| puts v * 2}
 jordan_stats
+
+=begin iterate through items deleting if they meet certain conditions
+1.For arrays
+ method is .delete_if{|score| score < 80} or
+.reject {|score| score < 80} (returns nil if no changes)
+
+Hash also has .delete_if{|score| score < 80} or
+.reject {|score| score < 80} (returns nil if no changes)
+
+2. For arrays
+Array#keep_if .keep_if {|score| score > 80}
+Hash#keep_if  .keep_if{|k,v| score > 80}
+
+3.
+Array#select  .select {|score| score > 80} (returns nil if no changes)
+Hash#select  .select {|k,v| score > 80} (returns nil if no changes)
+Array#take_while .take_while{|score| < 80} (sort the array first)
+
+4.
+Array#drop_while .drop_while{|score| score < 80}
+}
+=end
