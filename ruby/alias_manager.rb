@@ -30,10 +30,9 @@ def swap2
   name = "Felicia del Torres"
   name_arr = name.split(' ')
   new_name_arr = []
-  name_arr.length.times { new_name_arr << " "}
+  name_arr.each { |e| new_name_arr << e}
   new_name_arr[0] = name_arr[-1]
   new_name_arr[-1] = name_arr[0]
   p new_name_arr
   p name_arr
-
 end
