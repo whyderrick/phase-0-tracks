@@ -47,7 +47,7 @@ def new_employee_intake
     if true_age && garlic_bread
       is_vampire ="probably not a vampire."
     end
-    if !true_age && (!(garlic_bread || health_care))
+    if !true_age && ( !garlic_bread || !health_care)
       is_vampire = "probably a vampire."
     end
     allergies.each do |word|
