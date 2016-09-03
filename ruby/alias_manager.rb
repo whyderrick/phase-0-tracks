@@ -12,27 +12,21 @@ Time limit: 40mins
 =end
 
 
+$name = "Felicia del Torres"
+$new_name_arr = []
+
 def swap_names
-  name = "Felicia del Torres" #expected output "Vussit Gimodoe"
-  name_arr = name.split(' ')
-  p name_arr
-  new_name_arr = []
-  p new_name_arr
-  new_name_arr.unshift(name_arr[-1])
-  p new_name_arr
-  p name_arr
-  new_name_arr.push(name_arr[0])
-  p new_name_arr
+  name_arr = $name.split(' ')
+  name_arr.each { |e| $new_name_arr << e}
+  $new_name_arr[0] = name_arr[-1]
+  $new_name_arr[-1] = name_arr[0]
+  p $new_name_arr
   p name_arr
 end
 
-def swap2
-  name = "Felicia del Torres"
-  name_arr = name.split(' ')
-  new_name_arr = []
-  name_arr.each { |e| new_name_arr << e}
-  new_name_arr[0] = name_arr[-1]
-  new_name_arr[-1] = name_arr[0]
+def shift_letters
   p new_name_arr
-  p name_arr
 end
+
+swap_names
+shift_letters
