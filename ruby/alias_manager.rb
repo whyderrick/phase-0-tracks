@@ -25,14 +25,14 @@ end
 
 
 
-def shift_letters
+def shift_letters(array)
+  alphabet = (a..z).to_a
+  vowels = alphabet.select { |char| char =~ /aeiou/ }
+  consonants = alphabet.select {|char| char =~ /[^aeiou]/}
   letters_arr = []
-  letters_arr = $new_name_arr.map do |word|
-    word.split('')
+  letters_arr = array.map do |letter|
+    if letter ~=
   end
-  for letters_arr.first && letters_arr.last
 
-  end
-  p
 end
 
