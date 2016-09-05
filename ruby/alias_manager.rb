@@ -12,8 +12,7 @@ Time limit: 40mins – lololols
 =end
 
 
-#$name = "Felicia del Torres"
-#$new_name_arr = []
+
 
 def swap_names(name)
   name_arr = name.split(' ')
@@ -33,17 +32,18 @@ def shift_letters(array)
   # names_array = name.downcase.split(' ')
   swapped_array = array.map do |word|
     word.chars.map do |letter|
-      p letter
       if vowels.include? letter
         vowels[vowels.index(letter) + 1]
       elsif consonants.include? letter
         consonants[consonants.index(letter) + 1]
       else
-        puts "This isn't a letter"
+        letter
       end
     end
   end
-  swapped_array
+  new_name = swapped_array.map{|item| item.join.capitalize}
+  new_name = new_name.join(' ')
+  new_name
 end
 
 # This is the method that will provide the user interface.
@@ -56,9 +56,7 @@ def cipher_name
     name = gets.chomp.downcase
     @new_name_arr = []
     array = swap_names(name)
-    array = array.map!{|word| word.chars}
-    p array
-    shift_letters(array)
+    puts "Your codename is #{shift_letters(array)}"
     puts "Would you like to do another? \n
     (\"Quit\" for no)."
     input = gets.chomp.downcase
