@@ -15,11 +15,12 @@ Time limit: 40mins – lololols
 
 
 def swap_names(name)
+  new_name_arr = []
   name_arr = name.split(' ')
-  name_arr.each { |e| @new_name_arr << e.downcase}
-  @new_name_arr[0] = name_arr[-1]
-  @new_name_arr[-1] = name_arr[0]
-  @new_name_arr
+  name_arr.each { |e| new_name_arr << e.downcase}
+  new_name_arr[0] = name_arr[-1]
+  new_name_arr[-1] = name_arr[0]
+  new_name_arr
 end
 
 def shift_letters(array)
@@ -51,16 +52,19 @@ def cipher_name
   puts "Would you like to scramble a name? \n
   (Type \"Quit\" when you've finished.)"
   input = gets.chomp.downcase
-  while input != "quit"
+  legend = {}
+  until input == "quit"
     puts "What name would you like to scramble?"
-    name = gets.chomp.downcase
-    @new_name_arr = []
-    array = swap_names(name)
-    puts "Your codename is #{shift_letters(array)}"
+    name = gets.chomp
+    array = swap_names(name.downcase)
+    codename = shift_letters(array)
+    puts "Your codename is #{codename}"
+    legend[name] = codename
     puts "Would you like to do another? \n
     (\"Quit\" for no)."
     input = gets.chomp.downcase
   end
+  legend.each{|k,v| puts "#{k} uses the name \"#{v}\" while in the field."}
 end
 
 cipher_name
