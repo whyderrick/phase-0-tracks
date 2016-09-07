@@ -6,8 +6,6 @@
   # print the list to the console [can you use one of your other methods here?]
 # output: each key in the hash
 
-
-
 # Method to add an item to a list
 # input: item name and optional quantity
 # steps: prompt them for the input and quantity
@@ -37,21 +35,35 @@ hash_of_items = {}
 def create_grocery_list(string, hash)
   array_of_items = string.split(" ")
   item_quantity = 1
-  array_of_items.each do |item|
-    hash[item] = item_quantity
-  end
-  p hash
+  array_of_items.each { |item| hash[item] = item_quantity }
+  hash
 end
-
 
 def add_item(string, hash)
   hash[string] = 1
 end
 
-def print_list
-
+def remove_item(string, hash)
+  hash.delete(string)
+  hash
 end
+
+def update_quantity(item, new_quantity, hash)
+  hash[item] = new_quantity
+end
+
+def print_list(hash)
+  hash.each { |k,v| puts "Pick up #{v} #{k}." }
+end
+
 # DRIVER CODE
 
-create_grocery_list("apple banana carrot", hash_of_items)
-add_item("durian", hash_of_items)
+create_grocery_list("Lemonade Tomatoes Onions", hash_of_items)
+add_item("Ice Cream", hash_of_items)
+update_quantity("Lemonade", 2, hash_of_items)
+update_quantity("Tomatoes", 3, hash_of_items)
+update_quantity("Ice Cream", 4, hash_of_items)
+remove_item("Lemonade", hash_of_items)
+print_list(hash_of_items)
+
+# With an additional 20 minutes we could refactor the create list method to allow the string to take quantities as well by splitting into two arrays for item and quantity based on whether the item's index is even or odd
