@@ -67,3 +67,18 @@ remove_item("Lemonade", hash_of_items)
 print_list(hash_of_items)
 
 # With an additional 20 minutes we could refactor the create list method to allow the string to take quantities as well by splitting into two arrays for item and quantity based on whether the item's index is even or odd
+
+=begin
+REFLECTION:
+One key thing I learned about Psuedocode is that it's easy to skip steps when the solution seems to be intuitive. We left out steps about processing our input in our first draft. We also weren't specific enough about the input we'd give early on.
+
+We discussed the tradeoffs of arrays vs. hashes for about 10 minutes. Essentially, by using a hash for the list, we were limited to only adding a quantity to it as the value. It also made it much simpler to access each item. Had we made an array of hashes as I'd initially suggested, the methods we wrote would've been more difficult and required us to iterate across the array to find our name/item key.
+
+A method returns either its last line value (via implicit return) or whatever value shares a line with the return keyword.
+
+You can pass an object to a method. Strings, numbers, array, hashes, variables, and likely other things too.
+
+You can pass information between methods by mutating the variable. Meaning passing a variable as an argument to a method and having the method perform some operation on it and return the change variable.
+
+Mutation and method arguments were definitely made clearer. I'm still in need of additional practice with iteration, and the way we opted to code this made it pretty easy to skirt that.
+=end
