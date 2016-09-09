@@ -18,5 +18,7 @@ end
 
 child = Child.new
 p child.yell_happily("I'm in love")
+p child.yell_angrily("I want food")
 drill_sargeant = Trainer.new
+p drill_sargeant.yell_happily("Recruits, you're getting useful")
 p drill_sargeant.yell_angrily("My love has left me cuckolded")
