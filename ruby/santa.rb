@@ -1,12 +1,12 @@
 class Santa
   attr_reader :gender, :ethnicity
   attr_accessor :age, :gender, :reindeer_ranking
-  def initialize(gender, ethnicity)
-    puts "Initializing Santa instance. This Santa is named #{gender}..."
+  def initialize(ethnicity, gender)
+    @age = rand(1..140)
     @gender = gender
     @ethnicity = ethnicity
+    puts "Initializing Santa instance. This Santa's gender is #{gender}. Its ethnicity is #{ethnicity} and it is #{@age} years old."
     @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-    @age = 0
   end
 
   def speak
@@ -38,14 +38,12 @@ end
 
 # Driver code
 santas = []
-santa = Santa.new("black", "male")
-# sample_ethnicities = ["white", "black", "Latino", "American Indian", "Pacific Islander", "South Asian", "East Asian", "West African", "East African", "ashamed"]
+sample_ethnicities = ["white", "black", "Latino", "American Indian", "Pacific Islander", "South Asian", "East Asian", "West African", "East African", "ashamed"]
 # sample_names = ["MAERON", "MAERYN","MAGGIE" ,"MAHALA", "MAHALIA", "MAHARI","MAJ","MAJOR","MAKAILA","MALACHI","MARISOL","MAURA","MAUREEN","MAURICE", "MAVERICK"]
-# sample_genders = ["agender", "androgyne", "bigender", "butch", "demiboy", "demigender", "femme", "genderfluid", "genderqueer","intergender","nonbinary","male", "female"]
-# 10.times do
-#   santas << Santa.new(sample_ethnicities.sample, sample_genders.sample)
-santa.reindeer_ranking
-santa.celebrate_birthday
-santa.get_mad_at("Dasher")
+sample_genders = ["agender", "androgyne", "bigender", "butch", "demiboy", "demigender", "femme", "genderfluid", "genderqueer","intergender","nonbinary","male", "female"]
+70.times do
+  santas << Santa.new(sample_ethnicities.sample, sample_genders.sample)
+end
+
 
 
