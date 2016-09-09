@@ -1,4 +1,6 @@
 class Santa
+  attr_reader :gender, :ethnicity
+  attr_accessor :age, :gender, :reindeer_ranking
   def initialize(gender, ethnicity)
     puts "Initializing Santa instance. This Santa is named #{gender}..."
     @gender = gender
@@ -15,37 +17,17 @@ class Santa
     puts "That was a good #{cookie_type}!"
   end
 
-  # Getter methods
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
-  end
-
-  def reindeer_ranking
-    @reindeer_ranking
-  end
-
-
   # Setter methods
   def celebrate_birthday
     @age += 1
-    puts @age
-  end
-
-  def gender=(new_gender)
-    @gender = new_gender
   end
 
   def get_mad_at(bad_deer)
     reindeer_ranking
     reindeer_ranking.each do |item|
       if item == bad_deer
-        reindeer_ranking.push(bad_deer)
-        deer_index = reindeer_ranking.index(item)
-        reindeer_ranking.delete_at(deer_index)
+        reindeer_ranking.delete(item)
+        reindeer_ranking.push(item)
       else
         item
       end
@@ -62,7 +44,8 @@ santa = Santa.new("black", "male")
 # sample_genders = ["agender", "androgyne", "bigender", "butch", "demiboy", "demigender", "femme", "genderfluid", "genderqueer","intergender","nonbinary","male", "female"]
 # 10.times do
 #   santas << Santa.new(sample_ethnicities.sample, sample_genders.sample)
-puts santa.reindeer_ranking
+santa.reindeer_ranking
 santa.celebrate_birthday
 santa.get_mad_at("Dasher")
-puts santa.reindeer_ranking
+
+
