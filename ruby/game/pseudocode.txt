@@ -21,7 +21,7 @@ Take a word as input
 Set an acceptable number of guesses based on word length
 Track number of guesses thus far.
 Track what letters have been guessed so far
-Create string of hyphens that replaces hyphens with a letter when that letter is guessed
+Create string of hyphens that replaces hyphens with a letter when that letter is guessed (Upon implementation, too vague)
 If word matches guessed word when guesses left = 0
   Praise
 Else
