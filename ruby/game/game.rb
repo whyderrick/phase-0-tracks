@@ -4,7 +4,7 @@ class Game
   #not sure if guess count needs to be accessible outside the class or not
 
   def initialize(word)
-    @word = word.downcase
+    @word = word
     word_length = word.length
     @guesses_left = word_length/2 + 5
     @guess_word = ""
@@ -28,32 +28,24 @@ class Game
       end
       response = @guess_word
     end
-    puts "You have #{guesses_left} guesses remaining."
+    puts "You have #{guesses_left} guesses remaining." unless guesses_left == 0
     puts response
     response
   end
-
 end
 
-game = Game.new("dragoon")
-game.make_guess("o")
-p '-' * 10
-game.make_guess("o")
-p '-' * 10
-game.make_guess("a")
-p '-' * 10
-game.make_guess("d")
-p '-' * 10
-game.make_guess("x")
-p '-' * 10
-game.make_guess("n")
-p '-' * 10
-game.make_guess("n")
-p '-' * 10
-game.make_guess("r")
-p '-' * 10
-game.make_guess("z")
-p '-' * 10
-game.make_guess("c")
-p '-' * 10
-game.make_guess("g")
+puts "Player 1, what's your word?"
+word = gets.chomp.downcase
+game = Game.new(word)
+end_game_message = ""
+while game.guesses_left > 0 do
+  if game.word == game.guess_word
+    end_game_message = "You figured out that the word was #{game.word}! You must've thought really hard about your choices."
+    end_game_message
+    break
+  else
+    puts "Player 2, what's your first letter guess?"
+    letter = gets.chomp.downcase
+    game.make_guess(letter)
+  end
+end
