@@ -16,17 +16,21 @@ describe Game do
   end
 
   it "Adds previous guesses to an array" do
-    #empty
+    game.make_guess("b")
+    expect(game.guess_array.include? "b").to be true
   end
 
   it "doesn't penalize repeat guesses" do
-    @guess_array = ["a", "b", "c"]
-    expect(game.make_guess("a")).to eq "That's a repeat guess. Try again"
-
+    game.make_guess("a")
+    counter = game.guesses_left
+    p counter
+    game.make_guess("a")
+    expect(game.guesses_left).to eq counter
   end
 
   it "Updates the number of guesses" do
-    #empty
+    game.make_guess("x")
+    expect(game.guesses_left).to eq 7
   end
 
   it "Updates hyphen string " do
