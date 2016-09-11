@@ -13,23 +13,29 @@ class Game
   end
 
   def make_guess(letter)
-    if @guess_array.include? letter
-      response = "That's a repeat guess. Try again"
-      p response
-      response
-    else
+    # Repeat guesses doesn't currently work
+    # if @guess_array.include? letter
+    #   # response = "That's a repeat guess. Try again"
+    #   # p response
+    #   # return response
+    # else
       @guesses_left -= 1
       @guess_array << letter
-      word.each_char do |char|
-        @guess_word[word.index(char)] = char if word[char] == letter
+      puts  "@guess_array is #{@guess_array}"
+      idx = 0
+      while idx < @word.length do
+        char = word[idx]
+        @guess_word[idx] = char if char == letter
         p char, guess_word
+        idx +=1
+        puts "idx is #{idx}"
       end
-      @guess_word
-    end
+      response = @guess_word
+    # end
+    response
   end
 
 end
 
 game = Game.new("dragoon")
-game.make_guess("o")
 game.make_guess("o")

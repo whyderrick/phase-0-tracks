@@ -21,6 +21,7 @@ describe Game do
 
   it "doesn't penalize repeat guesses" do
     @guess_array = ["a", "b", "c"]
+    expect(game.make_guess("a")).to eq "That's a repeat guess. Try again"
 
   end
 
