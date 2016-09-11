@@ -1,0 +1,37 @@
+Pseudocode Draft1
+Allow User1 to input word (or phrase)
+Set a limit for the number of guesses, relative to the length of the word
+Set a remaining guess counter = to guess limit
+Create an string that contains a hyphen for each letter in word.
+Until remaining guess counter = 0
+  Create a value to track if the word and guesses match.
+  Allow User2 to guess a letter
+  Decrease guesses remaining by 1
+  Until blank string matches input word
+    If User2's guess matches a letter in the input word
+      Replace the blank in the position of that character with the correctly guessed character
+      Show User2 the updated blanks string.
+    Else
+     Show the blanks string
+Tell user whether game is won or not
+
+Pseudocode Draft2
+(What the computer does without people)
+Take a word as input
+Set an acceptable number of guesses based on word length
+Track number of guesses thus far.
+Track what letters have been guessed so far
+Create string of hyphens that replaces hyphens with a letter when that letter is guessed (Upon implementation, too vague)
+If word matches guessed word when guesses left = 0
+  Praise
+Else
+  Taunt
+
+
+Return updated hyphen string after each guess
+
+(What the user does)
+Inputs initial word.
+Guesses letter
+Wonders about number of guesses remaining
+Views updated guess string.
