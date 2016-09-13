@@ -4,8 +4,9 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
-#
+# require_relative lets you treat the current working directory as a given without needing to reference the containing directory itself.
+# Conversely, require requires you to use ./ to include a file that's in the same directory as the file where require or require_relative is typed.
+
 require_relative 'state_data'
 
 class VirusPredictor
@@ -21,7 +22,7 @@ class VirusPredictor
     speed_of_spread(@population_density, @state)
   end
 
-  private
+  private #what is this?
 
   def predicted_deaths(population_density, population, state)
     # predicted deaths is solely based on population density
