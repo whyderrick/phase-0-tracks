@@ -85,4 +85,25 @@ end
 
 STATE_DATA.each_key { |state_name| VirusPredictor.new(state_name).virus_effects }
 
+=begin
 # Reflection Section#=======================================================================
+- What are the differences between the two different hash syntaxes in STATE_DATA?
+We saw Hash literal syntax used to create the parent hash which had the states (as strings) for its keys. The hashes that were nested as the value for each state used a hash symbol-encoding syntax. The `key: value` syntax creates the key as a symbol inside the hash rather than as a string, even without the preceding colon.
+
+- What does `require_relative` do? How is it different from `require`?
+`require_relative` essentially links the code from another Ruby file to the file that calls `require_relative`. `require_relative` differs from `require` in that it treats the parent directory of the file that invokes as the path for the ruby file that's passed to `require`. At minimum, it eliminates the need to declare the path as `./<file>`
+
+- What are some ways to iterate through a hash?
+Hash#each
+Hash#each_key
+Hash#each_value
+Hash#each_pair
+
+- When refactoring virus_effects, what stood out to you about the variables, if anything?
+
+It immediately stood out that we had several similar parameters being passed to both the virus_effects method and the methods it called.
+Shortly after that, it became pretty clear that the values we were calling were instance variables that we didn't actually need pass as arguments to any of the methods.
+
+- What concept did you most solidify in this challenge?
+Refactoring. Holy hell, I had no idea there was so much we could do to clean up code. I also got a much clearer sense of what we mean by readability. In part because of absorption and in part because I like abstracts, I've been writing code that doesn't link too many things together, but also doesn't take a deep interest in approachably named variables.
+=end
