@@ -8,9 +8,16 @@
 function reverseString(string) {
   newString = ""
   for (i = string.length -1; i >= 0 ; i--) {
-    newString += string[i]
+    newString += string[i];
   }
-  return newString
+  return newString;
 }
 
-console.log(reverseString("Derrick"))
+console.log(reverseString("Derrick"));
+var revString1 = reverseString("banana");
+
+if (revString1 != "banana") {
+  console.log("revString1 is not a palindrome");
+} else {
+  console.log("This program is broken because \"banana\" is not a palindrome.");
+}
