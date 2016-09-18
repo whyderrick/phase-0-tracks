@@ -40,21 +40,31 @@ How do we get there?
 -- Increment to the next key in object1
 -- Repeat lines 37 - 40 until there are no more keys in object1
 -- Return false
-
-
-If a key is the same, check if the values also match
-
 */
+function compareObj(object1, object2) {
+  // I happened to see the syntax for this on the MDN page for for loops while troubleshooting the last method
+  for (var prop1 in object1) {
+    // Iterate through the keys in object2
+    for (var prop2 in object2){
+      // Compare the property from object1 to object2 properties
+      if (prop1 === prop2) {
+        // Return true if the keys and properties match
+        if (obj[prop1] === obj[prop2]){
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+};
 
 // Driver Code
 console.log(findLongest(["Derrick", "Derrick Carr", "I am become Galactus", "banana"]));
 
 console.log(findLongest(["a", "bb", "ggggggg", "llllllllllll", "ccc"]));
 
-/*
-Pseudocode: takes two objects and checks to see if the objects share at least one key-value pair
-Input:
-Output:
-How do we get there?
+var obj1 = {name: "Steven", age: 54};
+var obj2 = {name: "Tamir", age: 54};
+console.log(compareObj(obj1, obj2));
 
-*/
+console.log(compareObj(obj3, obj4));
