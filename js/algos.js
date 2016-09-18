@@ -4,7 +4,7 @@ Input: An array of words and phrase
 Output: A single item from the array, that which has the greatest length
 How do we get there?:
 - Take the array
-- Split the array into individual words using a separator
+- Split the array into individual words using a separator [on implementation, realized this is completely unnecessary.]
 - Iterate through the array comparing each item to the longest item so far
 --- Initialize a variable, champion
 --- For each item in the array, compare its length to champion
@@ -13,4 +13,18 @@ How do we get there?:
 - Return the champion
 
 */
+function findLongest(array){
+  champion = array[0]
+  for (var item in array) {
+    console.log(item)
+    if (item.length > champion.length){
+      champion = item;
+    };
+  }
+  return champion;
+};
 
+// Driver Code
+console.log(findLongest(["Derrick", "Derrick Carr", "I am become Galactus", "banana"]));
+
+console.log(findLongest(["a", "bb", "ggggggg", "llllllllllll", "ccc"]));
