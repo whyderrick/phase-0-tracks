@@ -82,11 +82,10 @@ function randomWords(integer){
   while (passes < integer) {
     word = ""
     wordLength = Math.floor(Math.random() * 10)
-    console.log("wordLength is " + wordLength);
+    // console.log("wordLength is " + wordLength);
     for(var i = 0; i < wordLength; i++) {
       index = Math.floor(Math.random() * 26);
       word += alphabet[index];
-      console.log(word)
     }
     passes++;
     wordArray.push(word);
@@ -107,4 +106,12 @@ var obj3 = {name: "Steven", age: 54};
 var obj4 = {name: "Tamir", age: 13};
 console.log(compareObj(obj3, obj4));
 */
-console.log(randomWords(4));
+
+for(var count = 0; count < 10; count++){
+  // I couldn't chain the methods without changing my randomWords function to print its array or making findLongest print its input array, and I didn't think that change was worth it to save a line or two down here with
+  // console.log(findLongest(randomWords(wordNumber)));
+  wordNumber = Math.floor(Math.random() * 5) + 1;
+  var words = randomWords(wordNumber);
+  console.log(words);
+  console.log(findLongest(words));
+}
