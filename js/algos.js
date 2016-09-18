@@ -75,6 +75,24 @@ How do we get there?:
 
 */
 
+function randomWords(integer){
+  var wordArray = [];
+  var passes = 0;
+  alphabet = "abcdefghijklmnopqrstuvwxyz"
+  while (passes < integer) {
+    word = ""
+    wordLength = (Math.random() * 10).floor;
+    console.log("wordLength is " + wordLength);
+    for(var i = 0; i < wordLength; i++) {
+      index = (Math.random() * 26).floor;
+      word += alphabet[index];
+      console.log(word)
+    }
+    wordArray.push(word);
+  }
+  return wordArray
+}
+
 // Driver Code
 console.log(findLongest(["Derrick", "Derrick Carr", "I am become Galactus", "banana"]));
 
@@ -87,3 +105,5 @@ console.log(compareObj(obj1, obj2));
 var obj3 = {name: "Steven", age: 54};
 var obj4 = {name: "Tamir", age: 13};
 console.log(compareObj(obj3, obj4));
+
+console.log(randomWords(4));
