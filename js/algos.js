@@ -58,6 +58,23 @@ function compareObj(object1, object2) {
   return false;
 };
 
+/*
+Pseudocode: Generate random test data (randomWords)
+Input: An integer
+Output: An array of <input integer> randomly generated words conglomerations of letters, between 1 and 10 characters in length.
+How do we get there?:
+- Take an integer
+- Create an array (wordArray)
+- For the number of times up to integer, do the following:
+-- create a variable wordLength that is a random number between 1 and 10
+-- create a empty string (word)
+-- For wordLength number of times:
+---- Generate a random letter and add it to word
+-- Repeat until counter matches integer
+- Return wordArray
+
+*/
+
 // Driver Code
 console.log(findLongest(["Derrick", "Derrick Carr", "I am become Galactus", "banana"]));
 
