@@ -88,13 +88,14 @@ function randomWords(integer){
       word += alphabet[index];
       console.log(word)
     }
+    passes++;
     wordArray.push(word);
   }
   return wordArray
 }
 
 // Driver Code
-console.log(findLongest(["Derrick", "Derrick Carr", "I am become Galactus", "banana"]));
+/*console.log(findLongest(["Derrick", "Derrick Carr", "I am become Galactus", "banana"]));
 
 console.log(findLongest(["a", "bb", "ggggggg", "llllllllllll", "ccc"]));
 
@@ -105,5 +106,5 @@ console.log(compareObj(obj1, obj2));
 var obj3 = {name: "Steven", age: 54};
 var obj4 = {name: "Tamir", age: 13};
 console.log(compareObj(obj3, obj4));
-
+*/
 console.log(randomWords(4));
