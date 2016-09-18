@@ -17,8 +17,8 @@ function findLongest(array){
   champion = array[0]
   for (var item in array) {
     console.log(item)
-    if (item.length > champion.length){
-      champion = item;
+    if (array[item].length > champion.length){
+      champion = array[item];
     };
   }
   return champion;
