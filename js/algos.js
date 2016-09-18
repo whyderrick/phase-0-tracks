@@ -81,10 +81,10 @@ function randomWords(integer){
   alphabet = "abcdefghijklmnopqrstuvwxyz"
   while (passes < integer) {
     word = ""
-    wordLength = (Math.random() * 10).floor;
+    wordLength = Math.floor(Math.random() * 10)
     console.log("wordLength is " + wordLength);
     for(var i = 0; i < wordLength; i++) {
-      index = (Math.random() * 26).floor;
+      index = Math.floor(Math.random() * 26);
       word += alphabet[index];
       console.log(word)
     }
