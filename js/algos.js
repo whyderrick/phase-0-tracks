@@ -49,7 +49,7 @@ function compareObj(object1, object2) {
       // Compare the property from object1 to object2 properties
       if (prop1 === prop2) {
         // Return true if the keys and properties match
-        if (obj[prop1] === obj[prop2]){
+        if (object1[prop1] === object2[prop2]){
           return true;
         }
       }
@@ -67,4 +67,6 @@ var obj1 = {name: "Steven", age: 54};
 var obj2 = {name: "Tamir", age: 54};
 console.log(compareObj(obj1, obj2));
 
+var obj3 = {name: "Steven", age: 54};
+var obj4 = {name: "Tamir", age: 13};
 console.log(compareObj(obj3, obj4));
