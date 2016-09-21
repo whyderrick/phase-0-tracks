@@ -29,3 +29,48 @@ Shadow Hearts: Covenant|9.6|true|Shadow Hearts|Playstation 2
 Final Fantasy X|9.2|true|Final Fantasy|Playstation 2
 Devil May Cry 3|8.9|true|Devil May Cry|Playstation 2
 Borderlands 2|8.2|false|Borderlands|Playstation 3
+
+5.
+SELECT * FROM franchises;
+
+1|The Legend of Zelda|12|4
+2|Borderlands|4|
+3|Devil May Cry|5|8
+4|Final Fantasy|17|6
+5|Shadow Hearts|4|5
+
+DELETE FROM franchises WHERE favorite_title_id IS NULL;
+
+SELECT * FROM franchises;
+
+1|The Legend of Zelda|12|4
+3|Devil May Cry|5|8
+4|Final Fantasy|17|6
+5|Shadow Hearts|4|5
+
+UPDATE titles SET franchise_id = NULL WHERE franchise_id = 2;
+
+6.
+SELECT * FROM titles, franchises;
+(Essentially a cross Join that joins each row from the left table combined with each record on the right. The total number of records is the number of records in table1 * number of records in table2.
+
+Cross join is useful as an alternative to iterating over arrays in that you'll create a pair with each combination of the data sets being joined.)
+3|Lost Odyssey|8.7|false||2|1|The Legend of Zelda|12|4
+3|Lost Odyssey|8.7|false||2|3|Devil May Cry|5|8
+3|Lost Odyssey|8.7|false||2|4|Final Fantasy|17|6
+3|Lost Odyssey|8.7|false||2|5|Shadow Hearts|4|5
+4|The Legend of Zelda: Ocarina of Time|9.1|false|1|4|1|The Legend of Zelda|12|4
+4|The Legend of Zelda: Ocarina of Time|9.1|false|1|4|3|Devil May Cry|5|8
+.
+.
+.
+
+SELECT * FROM titles LEFT OUTER JOIN franchises ON titles.franchise_id = franchises.id;
+(Typical join but includes every every from the left table. If there's no matching data in the right table, the places where matching data would be is populated with null values.)
+3|Lost Odyssey|8.7|false||2||||
+4|The Legend of Zelda: Ocarina of Time|9.1|false|1|4|1|The Legend of Zelda|12|4
+5|Shadow Hearts: Covenant|9.6|true|5|3|5|Shadow Hearts|4|5
+6|Final Fantasy X|9.2|true|4|3|4|Final Fantasy|17|6
+7|Ni No Kuni|9.5|true||1||||
+8|Devil May Cry 3|8.9|true|3|3|3|Devil May Cry|5|8
+9|Borderlands 2|8.2|false||1||||
