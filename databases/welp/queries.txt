@@ -25,3 +25,4 @@ SELECT b.name, u.first_name, u.last_name, rv.stars, rv.comment FROM reviews rv J
 
 The Beagle Nightclub|Dawit|Hailu|3|Like something out of a postcard!
 The Beagle Nightclub|Dawit|Hailu|2|I went to The Beagle Review once. Meh
+
