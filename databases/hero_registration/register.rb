@@ -72,3 +72,13 @@ create_commands.each { |command| db.execute(command)}
 def create_address
   "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state} #{Faker::Address.zip}"
 end
+
+def populate_known
+  KNOWN_HEROES.each do |hero, info|
+    hero_alias = hero
+    name = info[:real_name]
+    address = create_address
+    team_affiliation = info[:team_affiliation]
+  end
+  insert
+end
