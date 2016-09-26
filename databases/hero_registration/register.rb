@@ -26,6 +26,7 @@ create_suspected_cmd = <<-SQL
     id INTEGER PRIMARY KEY,
     accuser_name VARCHAR(255),
     alias VARCHAR(255),
+    power VARCHAR(255),
     suspect_name VARCHAR(255),
     known_id INTEGER FOREIGN_KEY REFERENCES known_supers(id)
     );
@@ -66,6 +67,8 @@ create_commands = [
 create_commands.each { |command| db.execute(command)}
 
 # iterate over the KNOWN_HEROES constant and add a new row for each in the known_supers table.
-def create_address(hash, key)
-  "#{Faker::Address.street_address} #{Faker::Address.street_suffix}, #{hash[key][:city]}, #{hash[key][:state]}"
+
+# Create a method
+def create_address
+  "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state} #{Faker::Address.zip}"
 end
