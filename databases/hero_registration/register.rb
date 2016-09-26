@@ -64,3 +64,8 @@ create_commands = [
 
 # create a table for each of the create commands.
 create_commands.each { |command| db.execute(command)}
+
+# iterate over the KNOWN_HEROES constant and add a new row for each in the known_supers table.
+def create_address(hash, key)
+  "#{Faker::Address.street_address} #{Faker::Address.street_suffix}, #{hash[key][:city]}, #{hash[key][:state]}"
+end
