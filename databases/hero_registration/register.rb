@@ -1,10 +1,11 @@
 # require gems
 require 'faker'
 require 'sqlite3'
+# require known_supers
+require_relative 'known_supers_data'
 
 # create SQLite3 database
 db = SQLite3::Database.new("hero_registration.db")
-
 
 #  I considered making a method that allows the user to make the want to make a method that makes a wizard for the user to create a new table, but it seems like that's uncommon and once we're using Rails we'll be more likely to use migration through ActiveRecord, so I'm comfortable passing on that idea for now.
 
