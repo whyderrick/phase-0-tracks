@@ -73,9 +73,9 @@ def create_address
   "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state} #{Faker::Address.zip}"
 end
 
-def create_known(database, name, hero_alias, address, team_affiliation)
-  statement = database.prepare( "INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?,?,?,?)")
-  database.execute('INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?, ?, ?, ?)', [name, hero_alias, address, team_affiliation])
+def create_known(database, name, hero_alias, address)
+  statement = database.prepare( "INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?,?,?,)")
+  database.execute('INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?, ?, ?, ?)', [name, hero_alias, address])
 end
 
 def populate_known(db, source)
@@ -95,7 +95,7 @@ def populate_known(db, source)
 end
 
 
-# create_known(db, "Peter Parker", "Spiderman", create_address, ["many"])
+create_known(db, "Peter Parker", "Spiderman", create_address)
 populate_known(db, KNOWN_HEROES)
 
 

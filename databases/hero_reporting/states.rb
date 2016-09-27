@@ -1,4 +1,4 @@
-states = Array[ ["AK", "Alaska"],
+STATES = Array[ ["AK", "Alaska"],
                 ["AL", "Alabama"],
                 ["AR", "Arkansas"],
                 ["AS", "American Samoa"],
