@@ -73,12 +73,35 @@ def create_address
   "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state} #{Faker::Address.zip}"
 end
 
-def populate_known
-  KNOWN_HEROES.each do |hero, info|
+def create_known(database, name, hero_alias, address, team_affiliation)
+  statement = database.prepare( "INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?,?,?,?)")
+  database.execute('INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?, ?, ?, ?)', [name, hero_alias, address, team_affiliation])
+end
+
+def populate_known(db, source)
+  statement = db
+  source.each do |hero, info|
     hero_alias = hero
     name = info[:real_name]
-    address = create_address
+    address = create_address()
     team_affiliation = info[:team_affiliation]
+
+    # puts " hero_alias is #{hero_alias}
+    # name is #{name}
+    # address is #{address}
+    # team_affiliation is #{team_affiliation}"
+   db.execute('INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?, ?, ?, ?)', [name, hero_alias, address, team_affiliation])
   end
-  insert
+end
+
+
+# create_known(db, "Peter Parker", "Spiderman", create_address, ["many"])
+populate_known(db, KNOWN_HEROES)
+
+
+KNOWN_HEROES.each do |hero, info|
+  statement = <<-SQL
+    INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?,?,?,?)
+  SQL
+  db.execute(statement, [hero, info[:real_name], create_address(),info[:team_affiliation]])
 end
