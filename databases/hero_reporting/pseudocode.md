@@ -10,5 +10,11 @@ Ideally, once two people id the same person as the same super, that super is clo
 
 ## How do we build it?
 - Create 3 tables (suspects, investigators, leads) with data from Faker
-- Populate investigator table assigning one to each state
-- When a new entry is added to the DB
+- Populate investigator table assigning one to each state from an array of states. (this may create the same problem as earlier and if it does, some states may not have inspectors)
+- When a new entry is added to the DB check if the hero name matches any others.
+  - If it does
+    - insert that hero to leads with a randomly generated address
+    - update that record with the inspector for that state
+  - Else
+    - Do nothing
+- Report to reporter that the inspector for their state will be in touch.

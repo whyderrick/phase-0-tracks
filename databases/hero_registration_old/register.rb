@@ -85,7 +85,7 @@ def populate_known(db, source)
     name = info[:real_name]
     address = create_address()
     team_affiliation = info[:team_affiliation]
-
+    command =
     # puts " hero_alias is #{hero_alias}
     # name is #{name}
     # address is #{address}
