@@ -32,7 +32,23 @@ create_investigator_table = <<-SQL
 SQL
 
 # Recreate reports table with field for suspect_name
-#http://stackoverflow.com/questions/4253804/insert-new-column-into-table-in-sqlite
+modify_investigator_table = [
+  "ALTER TABLE reports RENAME TO tempOldTable;",
+  "CREATE TABLE reports(
+    id INTEGER PRIMARY KEY,
+    reporter_name VARCHAR(255),
+    reporter_state VARCHAR(255),
+    reporter_phone VARCHAR(255),
+    hero_seen VARCHAR(255),
+    suspect_name VARCHAR(255),
+    powers_displayed VARCHAR(255),
+    investigator_id INTEGER FOREIGN_KEY REFERENCES investigators(id)
+    );"
+]
+
+modify_investigator_table.each do |statement|
+  db.execute(statement)
+end
 
 create_commands = [create_reports_table, create_investigator_table]
 create_commands.each {|command| db.execute(command)}
