@@ -75,4 +75,19 @@ def report_powers(database)
   database.execute(sql, [reporter_name, reporter_state, reporter_phone, hero_seen, powers_displayed])
 end
 
+# Seed the reports table
+=begin
+1500.times do
+  report_powers(db)
+end
+=end
 
+# Write a method to count entries in the database
+def count_entries(database, name)
+  sql = <<-SQL
+    SELECT hero_seen, COUNT(*) c FROM reports WHERE hero_seen = ? GROUP BY hero_seen HAVING c > 1
+  SQL
+  p database.execute(sql, name)
+end
+
+count_entries(db, "Gambit")
