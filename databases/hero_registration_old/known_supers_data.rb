@@ -63,7 +63,7 @@ KNOWN_HEROES = {
       real_name: "Henry Pym",
       city: "Washington",
       state: "D.C.",
-      team_affiliation: nil
+      team_affiliation: []
     },
     "She-Hulk" => {
       real_name: "Jennifer Walters",

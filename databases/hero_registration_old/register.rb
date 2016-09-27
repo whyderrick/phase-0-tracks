@@ -85,13 +85,13 @@ def populate_known(db, source)
     hero_alias = hero
     hero_name = info[:real_name]
     address = create_address()
-    hero_team_affiliation = info[:team_affiliation]
-    command = 'INSERT INTO known_supers (name, alias, address) VALUES (?,?,?)'
+    hero_team_affiliation = info[:team_affiliation].join(',')
+    command = 'INSERT INTO known_supers (name, alias, address, team_affiliation) VALUES (?,?,?,?)'
     # puts " hero_alias is #{hero_alias}
     # name is #{name}
     # address is #{address}
-    # team_affiliation is #{team_affiliation}"
-   db.execute(command, [hero_name, hero_alias, address])
+    # puts "team_affiliation is #{hero_team_affiliation}"
+   db.execute(command, [hero_name, hero_alias, address, hero_team_affiliation])
   end
 end
 
