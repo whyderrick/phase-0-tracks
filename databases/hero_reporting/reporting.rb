@@ -15,6 +15,7 @@ create_reports_table = <<-SQL
     reporter_state VARCHAR(255),
     reporter_phone VARCHAR(255),
     hero_seen VARCHAR(255),
+
     powers_displayed VARCHAR(255),
     investigator_id INTEGER FOREIGN_KEY REFERENCES investigators(id)
     );
@@ -29,6 +30,9 @@ create_investigator_table = <<-SQL
       password VARCHAR(255)
       );
 SQL
+
+# Recreate reports table with field for suspect_name
+#http://stackoverflow.com/questions/4253804/insert-new-column-into-table-in-sqlite
 
 create_commands = [create_reports_table, create_investigator_table]
 create_commands.each {|command| db.execute(command)}
