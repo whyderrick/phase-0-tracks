@@ -46,4 +46,39 @@ end
 #   SQL
 #   db.execute(sql_cmd, [Faker::Name.name, Faker::Internet.user_name, Faker::Internet.password(8, 18)])
 # end
-53.times {insert_investigator(db)}
+#53.times {insert_investigator(db)}
+
+# STATES.each_with_index do |state, index|
+#   state_length = STATES.length
+#   state_name = STATES[index][1]
+#   p state_length
+#   p index
+#   # db.execute("UPDATE investigators SET jurisdiction = ? WHERE investigators.id % ? = 0;",[state_name,index])
+# end
+
+# winning insert!
+STATES.each do |sub_array|
+  state_name = sub_array[1]
+  investigator_name = Faker::Name.name
+  investigator_user_name = Faker::Internet.user_name
+  investigator_password = Faker::Internet.password
+
+  db.execute("INSERT INTO investigators (name, jurisdiciton, username, password) VALUES (?,?,?,?)", [investigator_name, state_name, investigator_user_name, investigator_password])
+end
+
+STATES.each_with_index do |state, index|
+  state_name = state[1]
+  db.execute("UPDATE investigators SET jurisdiciton = ? WHERE investigators.id % ? = 0;",[state_name,index])
+end
+
+
+STATES.each do |sub_array|
+  states = sub_array[1]
+  names = Faker::Name.name
+  db.execute("INSERT INTO user2 (name, state) VALUES (?,?)", [names, states])
+end
+
+ STATES.each do |sub_array|
+    state = sub_array[1]
+     db.execute("INSERT INTO users (name) VALUES (?);", state)
+   end
