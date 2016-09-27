@@ -1,0 +1,28 @@
+Allow citizens of the world to report suspected superheroes and have their suspicions confirmed if the person in question is a super with a known identity. If the accused possesses powers, we'll tell them which superhero the accused party is. Perhaps the address too if they feel froggy.
+
+How do we build it?
+First we'll need to use Ruby and Faker to populate the database with known superheroes. We'll populate 50 or so pairs at random with hero names and secret identities.
+
+Once we have a table of known heroes and details, we'll allow for two types of users, investigators and the public. Investigators will be able to write new heroes to the known heroes table. The public will have their accusations logged in a second table. When there are 5 different members of the public who have nominated someone, investigators will receive a notification.
+
+(lol at scope creep over 8 hours. Starting over...)
+
+What are we building?
+A superhero registration database. The MVP will have a table of known heroes and locations that can be populated by inspectors and a table of suspicious individuals that can be populated by members of the general public who submit accusations.
+
+Time permitting, there will be a third table for possible leads, relevant once someone has been nominated more then 3 or 5 times.
+
+What does it need to include?
+A database
+  - Table 1: known supers
+  - Table 2: recent accusations
+An UI that distinguishes between inspectors and regular people
+  - A prompt that allows differentiation
+  - A password entry feature
+  - Multiple logic paths to work with either table
+  - Code to interact with the DB depending on the user.
+  - TESTS
+
+
+
+
