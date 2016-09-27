@@ -1,6 +1,7 @@
 # Set external dependencies (if that's the right term for this)
 require 'SQLite3'
 require 'faker'
+require 'bcrypt'
 require_relative 'states'
 
 # initialize a database
@@ -35,6 +36,7 @@ create_commands.each {|command| db.execute(command)}
 def insert_investigator(database)
   name = Faker::Name.name
   username = Faker::Internet.user_name
+  # password should be run through bcrypt, but we'll learn more about password management with Sinatra and I'm running behind.
   password = Faker::Internet.password(8,18)
   cmd = "INSERT INTO investigators (name, username,  password) VALUES (?,?,?)"
   database.execute(cmd, [name, username, password])
@@ -48,13 +50,6 @@ end
 # end
 #53.times {insert_investigator(db)}
 
-# STATES.each_with_index do |state, index|
-#   state_length = STATES.length
-#   state_name = STATES[index][1]
-#   p state_length
-#   p index
-#   # db.execute("UPDATE investigators SET jurisdiction = ? WHERE investigators.id % ? = 0;",[state_name,index])
-# end
 
 # winning insert!
 STATES.each do |sub_array|
@@ -66,19 +61,18 @@ STATES.each do |sub_array|
   db.execute("INSERT INTO investigators (name, jurisdiciton, username, password) VALUES (?,?,?,?)", [investigator_name, state_name, investigator_user_name, investigator_password])
 end
 
-STATES.each_with_index do |state, index|
-  state_name = state[1]
-  db.execute("UPDATE investigators SET jurisdiciton = ? WHERE investigators.id % ? = 0;",[state_name,index])
+=begin
+ Populate the reports table
+=end
+def report_powers(database)
+  reporter_name = Faker::Name.name
+  reporter_state = Faker::Address.state
+  reporter_phone = Faker::PhoneNumber.phone_number
+  hero_seen = Faker::Superhero.name
+  powers_displayed = Faker::Superhero.power
+
+  sql = ("INSERT INTO reports (reporter_name,reporter_state, reporter_phone, hero_seen, powers_displayed) VALUES (?,?,?,?,?)")
+  database.execute(sql, [reporter_name, reporter_state, reporter_phone, hero_seen, powers_displayed])
 end
 
 
-STATES.each do |sub_array|
-  states = sub_array[1]
-  names = Faker::Name.name
-  db.execute("INSERT INTO user2 (name, state) VALUES (?,?)", [names, states])
-end
-
- STATES.each do |sub_array|
-    state = sub_array[1]
-     db.execute("INSERT INTO users (name) VALUES (?);", state)
-   end
