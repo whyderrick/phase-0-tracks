@@ -8,6 +8,7 @@
   }
   function submit(event){
     event.preventDefault();
+    event.target.parentElement.hidden = true;
   }
   function addTitle(event) {
     event.target.title = "Tom \& Jerry";
@@ -18,4 +19,4 @@
   }
   photo2.addEventListener("load", addTitle);
   submitButton.addEventListener("click", submit)
-  submitButton.addEventListener("click", hideForm);
+
