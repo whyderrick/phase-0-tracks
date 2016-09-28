@@ -1,3 +1,4 @@
+window.addEventListener("load", function(event){
   console.log("Yes Igor! We've done it!")
 
   var photo2 = document.getElementsByTagName('img')[1];
@@ -9,6 +10,6 @@
     event.target.parentElement.hidden = true;
   }
 
-  photo2.addEventListener("load", addTitle);
+  // photo2.addEventListener("load", addTitle);
   submitButton.addEventListener("click", submit)
-
+})
