@@ -106,7 +106,9 @@ def submit_report(database)
   add_report(database, report_data)
   # This is far too high of an overhead operation. The solution would be to localize the assign_investigator method to operate on an individual row and iterate over the database.
   assign_investigator(database)
-  new_row = database.execute("SELECT * FROM reports ORDER BY id DESC LIMIT 1;")
+  investigator_name = database.execute("SELECT b.name FROM reports a JOIN investigators b ON a.investigator_id = b.id ORDER BY a.id DESC LIMIT 1;")
+  investigator_name = investigator_name.to_s.match(/[\w\.\s]+/)
+  puts "Your investigator, #{investigator_name}, will be in touch."
 end
 
 # Write methods to count entries in the database
