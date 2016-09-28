@@ -73,8 +73,7 @@ def add_report(database, hash)
   database.execute(sql, [ hash["reporter_name"], hash["reporter_state"], hash["reporter_phone"], hash["hero_seen"], hash["suspect_name"], hash["powers_displayed"]])
 end
 
-
-
+=begin
 1500.times do
   seed_hash = {
     "reporter_name" => Faker::Name.name,
@@ -86,7 +85,7 @@ end
 }
   add_report(db, seed_hash)
 end
-
+=end
 
 
 def submit_report(database)
@@ -110,7 +109,7 @@ end
 # Write a method to count entries in the database
 def count_all_entries(database)
   sql = <<-SQL
-    SELECT hero_seen, COUNT(*) c FROM reports WHERE hero_seen = ? GROUP BY hero_seen HAVING c > 1
+    SELECT hero_seen, COUNT(*) c FROM reports GROUP BY hero_seen HAVING c > 1
   SQL
   p database.execute(sql)
 end
@@ -122,5 +121,4 @@ def count_super_reports(database, name)
   p database.execute(sql, name)
 end
 
-count_all_entries(db)
-count_super_reports(db, "Gambit")
+count_super_reports(db, "Star-Lord")
