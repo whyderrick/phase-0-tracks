@@ -9,13 +9,13 @@ db = SQLite3::Database.new('hero_reports.db')
 
 # build create table statements
 create_reports_table = <<-SQL
-  CREATE TABLE IF NOT EXISTS reports (
+  CREATE TABLE IF NOT EXISTS reports(
     id INTEGER PRIMARY KEY,
     reporter_name VARCHAR(255),
     reporter_state VARCHAR(255),
     reporter_phone VARCHAR(255),
     hero_seen VARCHAR(255),
-
+    suspect_name VARCHAR(255),
     powers_displayed VARCHAR(255),
     investigator_id INTEGER FOREIGN_KEY REFERENCES investigators(id)
     );
@@ -31,11 +31,10 @@ create_investigator_table = <<-SQL
       );
 SQL
 
-# Recreate reports table with field for suspect_name
-#http://stackoverflow.com/questions/4253804/insert-new-column-into-table-in-sqlite
 
 create_commands = [create_reports_table, create_investigator_table]
 create_commands.each {|command| db.execute(command)}
+
 
 def insert_investigator(database)
   name = Faker::Name.name
@@ -68,30 +67,60 @@ end
 =begin
  Populate the reports table
 =end
-def report_powers(database)
-  reporter_name = Faker::Name.name
-  reporter_state = Faker::Address.state
-  reporter_phone = Faker::PhoneNumber.phone_number
-  hero_seen = Faker::Superhero.name
-  powers_displayed = Faker::Superhero.power
+def add_report(database, hash)
+  sql = "INSERT INTO reports(reporter_name, reporter_state, reporter_phone, hero_seen, suspect_name, powers_displayed) VALUES (?,?,?,?,?,?)"
 
-  sql = ("INSERT INTO reports (reporter_name,reporter_state, reporter_phone, hero_seen, powers_displayed) VALUES (?,?,?,?,?)")
-  database.execute(sql, [reporter_name, reporter_state, reporter_phone, hero_seen, powers_displayed])
+  database.execute(sql, [ hash["reporter_name"], hash["reporter_state"], hash["reporter_phone"], hash["hero_seen"], hash["suspect_name"], hash["powers_displayed"]])
 end
 
-# Seed the reports table
-=begin
+
+
 1500.times do
-  report_powers(db)
+  seed_hash = {
+    "reporter_name" => Faker::Name.name,
+    "reporter_state" => Faker::Address.state,
+    "reporter_phone" => Faker::PhoneNumber.phone_number,
+    "hero_seen" => Faker::Superhero.name,
+    "suspect_name" => Faker::Name.name,
+    "powers_displayed" => Faker::Superhero.power
+}
+  add_report(db, seed_hash)
 end
-=end
+
+
+
+def submit_report(database)
+  report_data = {}
+  puts "What's your name?"
+  report_data[reporter_name] =  get.chomp
+  puts "What state do you live in?"
+  report_data[reporter_state] = Faker::Address.state
+  puts "If an investigator needs to reach you, what phone number should they dial?"
+  report_data[reporter_phone] = Faker::PhoneNumber.phone_number
+  puts "What's the superhero alias of the person you saw?"
+  report_data[hero_seen] = gets.chomp
+  puts "What do you think their secret identity is?"
+  report_data[suspect_name] = gets.chomp
+  puts ("What power did you see them use?")
+  report_data[powers_displayed] = gets.chomp
+
+  add_report(database, report_data)
+end
 
 # Write a method to count entries in the database
-def count_entries(database, name)
+def count_all_entries(database)
+  sql = <<-SQL
+    SELECT hero_seen, COUNT(*) c FROM reports WHERE hero_seen = ? GROUP BY hero_seen HAVING c > 1
+  SQL
+  p database.execute(sql)
+end
+
+def count_super_reports(database, name)
   sql = <<-SQL
     SELECT hero_seen, COUNT(*) c FROM reports WHERE hero_seen = ? GROUP BY hero_seen HAVING c > 1
   SQL
   p database.execute(sql, name)
 end
 
-count_entries(db, "Gambit")
+count_all_entries(db)
+count_super_reports(db, "Gambit")
