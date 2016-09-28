@@ -70,21 +70,24 @@ end
 def add_report(database, hash)
   sql = "INSERT INTO reports(reporter_name, reporter_state, reporter_phone, hero_seen, suspect_name, powers_displayed) VALUES (?,?,?,?,?,?)"
 
-  database.execute(sql, [hash["reporter_name"], hash["reporter_state"], hash["reporter_phone"], hash["hero_seen"], hash["suspect_name"], hash["powers_displayed"]])
+  database.execute(sql, [ hash["reporter_name"], hash["reporter_state"], hash["reporter_phone"], hash["hero_seen"], hash["suspect_name"], hash["powers_displayed"]])
 end
 
-seed_hash = {
-  "reporter_name" => Faker::Name.name,
-  "reporter_state" => Faker::Name.name,
-  "reporter_phone" => Faker::Name.name,
-  "hero_seen" => Faker::Superhero.name,
-  "suspect_name" => Faker::Name.name,
-  "powers_displayed" => Faker::Superhero.power
-}
+
 
 1500.times do
+  seed_hash = {
+    "reporter_name" => Faker::Name.name,
+    "reporter_state" => Faker::Address.state,
+    "reporter_phone" => Faker::PhoneNumber.phone_number,
+    "hero_seen" => Faker::Superhero.name,
+    "suspect_name" => Faker::Name.name,
+    "powers_displayed" => Faker::Superhero.power
+}
   add_report(db, seed_hash)
 end
+
+
 
 def submit_report(database)
   report_data = {}
@@ -119,4 +122,5 @@ def count_super_reports(database, name)
   p database.execute(sql, name)
 end
 
-# count_entries(db, "Gambit")
+count_all_entries(db)
+count_super_reports(db, "Gambit")
