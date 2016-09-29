@@ -19,4 +19,15 @@
   - Server rejection. "It's not you. It's me."
 
 ## What is the difference between GET and POST requests
+- GET is essentially "please give me x"
+- POST is essentially "please accept x and add it to your collection"
+
+GET requests info whereas POST adds info to the server (usually the database.)
+
 ## What is a cookie?
+A piece of data stored on your computer with information about you. Initially used for user preferences, but have become much more sophisticated and contain a wider variety of data.
+
+They're restricted to the site that created them (hence advertising through Google and Facebook).
+
+Cookies can return information about the client making a given request and tailor the response to the stored preferences or interests of that client.
+
