@@ -46,6 +46,21 @@ get '/students/:id' do
 end
 
 # write a GET route that retrieves
+# students whose ages are above a particular number
+get '/students/ages/:min_age' do
+  students = db. execute("SELECT * FROM students WHERE age >= ?", params[:min_age])
+  response = ""
+  students.each do |student|
+    response << "ID: #{student['id']}<br>"
+    response << "Name: #{student['name']}<br>"
+    response << "Age: #{student['age']}<br>"
+    response << "Campus: #{student['campus']}<br><br>"
+    response << "*" * 15 + "<br>"
+  end
+  response
+end
+
+# write a GET route that retrieves
 # an address
 get '/contact' do
   <<-http_response
@@ -64,4 +79,17 @@ get '/great_job' do
   else
     "Good job ol chap!"
   end
+end
+
+# write a GET route that takes two numbers
+# as route parameters and returns their sum
+
+get '/:param1/plus/:param2' do
+  param1 = params[:param1].to_i
+  p param1
+  param2 = params[:param2].to_i
+  p param2
+  sum = param1 + param2
+  p sum
+  "#{sum.to_s}"
 end
