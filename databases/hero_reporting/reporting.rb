@@ -73,8 +73,7 @@ def add_report(database, hash)
   database.execute(sql, [ hash["reporter_name"], hash["reporter_state"], hash["reporter_phone"], hash["hero_seen"], hash["suspect_name"], hash["powers_displayed"]])
 end
 
-
-
+=begin
 1500.times do
   seed_hash = {
     "reporter_name" => Faker::Name.name,
@@ -86,31 +85,36 @@ end
 }
   add_report(db, seed_hash)
 end
-
+=end
 
 
 def submit_report(database)
   report_data = {}
   puts "What's your name?"
-  report_data[reporter_name] =  get.chomp
+  report_data["reporter_name"] =  gets.chomp
   puts "What state do you live in?"
-  report_data[reporter_state] = Faker::Address.state
+  report_data["reporter_state"] = gets.chomp
   puts "If an investigator needs to reach you, what phone number should they dial?"
-  report_data[reporter_phone] = Faker::PhoneNumber.phone_number
+  report_data["reporter_phone"] = gets.chomp
   puts "What's the superhero alias of the person you saw?"
-  report_data[hero_seen] = gets.chomp
+  report_data["hero_seen"] = gets.chomp
   puts "What do you think their secret identity is?"
-  report_data[suspect_name] = gets.chomp
+  report_data["suspect_name"] = gets.chomp
   puts ("What power did you see them use?")
-  report_data[powers_displayed] = gets.chomp
+  report_data["powers_displayed"] = gets.chomp
 
   add_report(database, report_data)
+  # This is far too high of an overhead operation. The solution would be to localize the assign_investigator method to operate on an individual row and iterate over the database.
+  assign_investigator(database)
+  investigator_name = database.execute("SELECT b.name FROM reports a JOIN investigators b ON a.investigator_id = b.id ORDER BY a.id DESC LIMIT 1;")
+  investigator_name = investigator_name.to_s.match(/[\w\.\s]+/)
+  puts "Your investigator, #{investigator_name}, will be in touch."
 end
 
-# Write a method to count entries in the database
+# Write methods to count entries in the database
 def count_all_entries(database)
   sql = <<-SQL
-    SELECT hero_seen, COUNT(*) c FROM reports WHERE hero_seen = ? GROUP BY hero_seen HAVING c > 1
+    SELECT hero_seen, COUNT(*) c FROM reports GROUP BY hero_seen HAVING c > 1
   SQL
   p database.execute(sql)
 end
@@ -122,5 +126,24 @@ def count_super_reports(database, name)
   p database.execute(sql, name)
 end
 
-count_all_entries(db)
-count_super_reports(db, "Gambit")
+# Write a method to assign investigators to reports
+def assign_investigator(database)
+  sql = <<-SQL
+    UPDATE reports
+    SET investigator_id = (SELECT id
+                           FROM investigators
+                           WHERE jurisdiciton = reports.reporter_state)
+  SQL
+  database.execute(sql)
+end
+
+# rows = db.execute("SELECT * FROM reports")
+
+# rows.each do |row|
+#   puts row[0], row[1] if row[0] % 100 == 0
+#   sql = <<-SQL
+#   UPDATE reports SET investigator_id = 1 WHERE
+#   SQL
+# end
+
+submit_report(db)
