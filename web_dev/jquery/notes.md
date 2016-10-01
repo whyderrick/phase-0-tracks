@@ -37,3 +37,7 @@ Definitely useful. There's some noise, but a lot of clearly stated opinions abou
 ### Look up "best jQuery uses"
 *(20 minutes)*
 I looked at Uber's site a bit more and dialed it in 15 minutes early because I wasn't learning more.
+
+## Project
+### What?
+Create 4 rows of squares that behave different based on clicks.
